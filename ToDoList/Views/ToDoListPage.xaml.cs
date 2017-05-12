@@ -12,6 +12,7 @@ namespace ToDoList
 		public ToDoListPage()
 		{
 			InitializeComponent();
+            Title = "ToDos";
 		}
 
 		protected async override void OnAppearing()
@@ -21,44 +22,33 @@ namespace ToDoList
 			ItemList.ItemsSource = await App.DatabaseHandler.GetTodoItemList();
 		}
 
-		private async void TodoList_ItemTapped(object sender, ItemTappedEventArgs e)
-		{
-			var item = e.Item as TodoItem;
+        private async void TodoList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var item = e.Item as TodoItem;
             //DisplayAlert("Selection Made", "You tapped on " + item.title, "Ok");
             await Navigation.PushModalAsync(new NavigationPage(new ToDoItemDetailPage(item)));
         }
 
-        // unused code
-		async void OnAddItem(object sender, EventArgs e)
-		{
-			//TodoItem item1 = new TodoItem()
-			//{
-			//	title = "sample1",
-			//	details = "details details",
-			//	locationCoordinates = "100, 200"
-			//};
-
-			//await App.DatabaseHandler.SaveItem(item1);
-
-			for (int i = 0; i < 5; i++)
-			{
-				TodoItem item = new TodoItem()
-				{
-					title = "sample" + i,
-					details = "details details",
-					locationCoordinates = "100, 200",
-					dueDate = System.DateTime.Today
-				};
-
-				await App.DatabaseHandler.SaveItem(item);
-			}
-
-			ItemList.ItemsSource = await App.DatabaseHandler.GetTodoItemList();
-		}
-
         private async void AddItem_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new ToDoDetailInputPage()));
+        }
+
+        //Delete on long tap in android and swipe in iOS
+        public async void OnDelete(object sender, EventArgs e)
+        {
+            var mi = ((MenuItem)sender);
+            TodoItem item = mi.CommandParameter as TodoItem;
+
+            var accepted = await DisplayAlert("Delete?",
+                                              "Are your sure you want to delete " + item.title,
+                                              "OK", "Canel");
+
+            if (accepted)
+            {
+                await App.DatabaseHandler.DeleteItem(item);
+                ItemList.ItemsSource = await App.DatabaseHandler.GetTodoItemList();
+            }
         }
     }
 }

@@ -1,9 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ToDoList.ToDoDetailInputPage"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              Title="ToDo Detail Input">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="SaveButton" Text="SAVE" Command="{Binding SaveCommand}" />
+    </ContentPage.ToolbarItems>
     <ScrollView>
         <StackLayout Padding="10"
                      Orientation="Vertical">
@@ -28,7 +31,8 @@
                 <Label Text="Title"
                        Grid.Row="0" Grid.Column="0"
                        VerticalOptions="Center"
-                       Font="20" />
+                       Font="20"
+                       TextColor = "#123456"/>
                 <Entry Placeholder="Enter Title"
                        Grid.Row="0" Grid.Column="1"
                        Grid.ColumnSpan="2"
@@ -38,7 +42,8 @@
                        Grid.Row="1" Grid.Column="0"
                        VerticalOptions="Center"
                        Grid.RowSpan="2"
-                       Font="20"/>
+                       Font="20"
+                       TextColor = "#123456"/>
                 <Editor Grid.Row="1" Grid.Column="1"
                        Grid.ColumnSpan="2"
                        Grid.RowSpan="2"
@@ -47,7 +52,8 @@
                 <Label Text="Due Date"
                        Grid.Row="3" Grid.Column="0"
                        VerticalOptions="Center"
-                       Font="20"/>
+                       Font="20"
+                       TextColor = "#123456"/>
 
                 <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding DueDateTime}"
                             Grid.Row="3" Grid.Column="1"
@@ -72,7 +78,8 @@
                 <Label Text="Current Location"
                     Grid.Row="4" Grid.Column="0"
                     VerticalOptions="Center"
-                    Font="20"/>
+                    Font="20"
+                    TextColor = "#123456"/>
                 <Button x:Name="ButtonCurrentLocation"
                     Text="Click here.."
                     Grid.Row="4" Grid.Column="1"
@@ -88,10 +95,6 @@
                     HorizontalOptions="Center"
                     IsVisible="False"
                     IsEnabled="False" />
-
-                <Button Text="Save"
-                        Grid.Row="5" Grid.Column="1"
-                        Command="{Binding SaveCommand}"/>
             </Grid>
         </StackLayout>
     </ScrollView>

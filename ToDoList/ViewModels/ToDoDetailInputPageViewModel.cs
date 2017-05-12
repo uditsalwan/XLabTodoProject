@@ -11,7 +11,7 @@ namespace ToDoList
     {
         #region fields
         private string savingResult;
-        private string title = "hi";
+        private string title;
         private string description;
         private string currentLocation;
         private DateTime dueDateTime = DateTime.Now;
@@ -97,21 +97,19 @@ namespace ToDoList
             {
                 var todoItem = new TodoItem()
                 {
-                    ID = 123,
                     title = title,
                     details = description,
                     dueDate = dueDateTime,
                     locationCoordinates = currentLocation
                 };
-                PushToNext(todoItem);
+                saveItem(todoItem);
             }
         }
 
-        private async void PushToNext(TodoItem todoItem)
+        private async void saveItem(TodoItem todoItem)
         {
-            //await navigation.PushAsync(new MainPage()); // back button displayed with title
-            //await navigation.PushModalAsync(new MainPage()); //hides the "Back" button but title not displayed
-            //await toDoDetailInputPage.Navigation.PushModalAsync(new NavigationPage(new ToDoItemDetailPage(todoItem))); //hides the "Back" button and title displayed
+            await App.DatabaseHandler.SaveItem(todoItem);
+            await toDoDetailInputPage.Navigation.PopModalAsync();
         }
         #endregion
     }

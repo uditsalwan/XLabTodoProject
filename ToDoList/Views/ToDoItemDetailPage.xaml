@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ToDoList.ToDoItemDetailPage"
@@ -14,7 +14,6 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -23,36 +22,31 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Title"
+                <Label Text="Description"
                        Grid.Row="0" Grid.Column="0"
                        VerticalOptions="Center"
-                       Font="20" />
-                <Entry Text="{Binding Title}"
+                       Font="20" 
+                       TextColor = "#123456"/>
+                <Entry Text="{Binding Details}"
                        Grid.Row="0" Grid.Column="1"
                        Grid.ColumnSpan="2"
                        IsEnabled="False"/>
-                <Label Text="Description"
+                <Label Text="Due Date"
                        Grid.Row="1" Grid.Column="0"
                        VerticalOptions="Center"
-                       Font="20" />
-                <Entry Text="{Binding Details}"
+                       Font="20"
+                       TextColor = "#123456"/>
+                <Entry Text="{Binding DueDate}"
                        Grid.Row="1" Grid.Column="1"
                        Grid.ColumnSpan="2"
                        IsEnabled="False"/>
-                <Label Text="Due Date"
+                <Label Text="Current Location"
                        Grid.Row="2" Grid.Column="0"
                        VerticalOptions="Center"
-                       Font="20" />
-                <Entry Text="{Binding DueDate}"
-                       Grid.Row="2" Grid.Column="1"
-                       Grid.ColumnSpan="2"
-                       IsEnabled="False"/>
-                <Label Text="Current Location"
-                       Grid.Row="3" Grid.Column="0"
-                       VerticalOptions="Center"
-                       Font="20" />
+                       Font="20" 
+                       TextColor = "#123456"/>
                 <Entry Text="{Binding LocationCoordinates}"
-                       Grid.Row="3" Grid.Column="1"
+                       Grid.Row="2" Grid.Column="1"
                        Grid.ColumnSpan="2"
                        IsEnabled="False"/>
             </Grid>

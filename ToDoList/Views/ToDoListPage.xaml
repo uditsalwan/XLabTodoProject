@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-	xmlns:local="clr-namespace:ToDoList" 
-	x:Class="ToDoList.ToDoListPage">
-	<ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="AddItem" Text="ADD" Clicked="OnAddItem"/>
-
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ToDoList" x:Class="ToDoList.ToDoListPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="AddItem" Text="ADD" Clicked="AddItem_Clicked" />
     </ContentPage.ToolbarItems>
-	<ContentPage.Content>
-		<StackLayout Padding="20">
-			<Label Font="30" Text="ToDo Items" />
-			<ListView x:Name="ItemList" ItemTapped="TodoList_ItemTapped" HasUnevenRows="True">
-				<ListView.ItemTemplate>
-					<DataTemplate>
-						<ViewCell>
-							<StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical">
-								<StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
-									<Label Text="{Binding title}" />
-									<Label Text="{Binding dueDate}" />
-								</StackLayout>
-								<Label Text="{Binding details}}" />
-								<Label Text="{Binding locationCoordinates}}" />
-							</StackLayout>
-						</ViewCell>
-					</DataTemplate>
-				</ListView.ItemTemplate>
-			</ListView>
-		</StackLayout>
-	</ContentPage.Content>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="ItemList" ItemTapped="TodoList_ItemTapped" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+                            </ViewCell.ContextActions>
+                            <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="10">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                                    <Label Text="{Binding title}" />
+                                    <Label Text="{Binding dueDate}" />
+                                </StackLayout>                                
+                                <Label Text="{Binding details}}" />
+                                <Label Text="{Binding locationCoordinates}}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
