@@ -4,9 +4,9 @@
 	xmlns:local="clr-namespace:ToDoList" 
 	x:Class="ToDoList.ToDoListPage">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Text="+" Clicked="OnAddItem">
-		</ToolbarItem>
-	</ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="AddItem" Text="ADD" Clicked="OnAddItem"/>
+
+    </ContentPage.ToolbarItems>
 	<ContentPage.Content>
 		<StackLayout Padding="20">
 			<Label Font="30" Text="ToDo Items" />

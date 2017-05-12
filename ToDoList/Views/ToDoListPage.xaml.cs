@@ -21,13 +21,14 @@ namespace ToDoList
 			ItemList.ItemsSource = await App.DatabaseHandler.GetTodoItemList();
 		}
 
-		private void TodoList_ItemTapped(object sender, ItemTappedEventArgs e)
+		private async void TodoList_ItemTapped(object sender, ItemTappedEventArgs e)
 		{
 			var item = e.Item as TodoItem;
-			DisplayAlert("Selection Made", "You tapped on " + item.title, "Ok");
-		}
+            //DisplayAlert("Selection Made", "You tapped on " + item.title, "Ok");
+            await Navigation.PushModalAsync(new NavigationPage(new ToDoItemDetailPage(item)));
+        }
 
-
+        // unused code
 		async void OnAddItem(object sender, EventArgs e)
 		{
 			//TodoItem item1 = new TodoItem()
@@ -54,5 +55,10 @@ namespace ToDoList
 
 			ItemList.ItemsSource = await App.DatabaseHandler.GetTodoItemList();
 		}
-	}
+
+        private async void AddItem_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new ToDoDetailInputPage()));
+        }
+    }
 }

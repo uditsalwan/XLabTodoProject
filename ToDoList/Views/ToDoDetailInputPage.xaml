@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoList.ToDoDetailInputPage"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             Title="ToDo Detail Input">
+    <ScrollView>
+        <StackLayout Padding="10"
+                     Orientation="Vertical">
+            <Label Text="{Binding SavingResult}" HorizontalOptions="StartAndExpand"
+                   TextColor="Red"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Title"
+                       Grid.Row="0" Grid.Column="0"
+                       VerticalOptions="Center"
+                       Font="20" />
+                <Entry Placeholder="Enter Title"
+                       Grid.Row="0" Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Text="{Binding Title}"/>
+
+                <Label Text="Description"
+                       Grid.Row="1" Grid.Column="0"
+                       VerticalOptions="Center"
+                       Grid.RowSpan="2"
+                       Font="20"/>
+                <Editor Grid.Row="1" Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Grid.RowSpan="2"
+                       Text="{Binding Description}"/>
+
+                <Label Text="Due Date"
+                       Grid.Row="3" Grid.Column="0"
+                       VerticalOptions="Center"
+                       Font="20"/>
+
+                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding DueDateTime}"
+                            Grid.Row="3" Grid.Column="1"
+                            Grid.ColumnSpan="2" >
+                    <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                    <DatePicker.MinimumDate>
+                        <sys:DateTime x:FactoryMethod="Parse">
+                            <x:Arguments>
+                                <x:String>Jan 1 2000</x:String>
+                            </x:Arguments>
+                        </sys:DateTime>
+                    </DatePicker.MinimumDate>
+                    <DatePicker.MaximumDate>
+                        <sys:DateTime x:FactoryMethod="Parse">
+                            <x:Arguments>
+                                <x:String>Dec 31 2050</x:String>
+                            </x:Arguments>
+                        </sys:DateTime>
+                    </DatePicker.MaximumDate>
+                </DatePicker>
+
+                <Label Text="Current Location"
+                    Grid.Row="4" Grid.Column="0"
+                    VerticalOptions="Center"
+                    Font="20"/>
+                <Button x:Name="ButtonCurrentLocation"
+                    Text="Click here.."
+                    Grid.Row="4" Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Clicked="CurrentLocation_Clicked"
+                    IsVisible="True" />
+                <Entry x:Name="LabelGPS"
+                    
+                    Grid.Row="4" Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Text = "{Binding CurrentLocation}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    IsVisible="False"
+                    IsEnabled="False" />
+
+                <Button Text="Save"
+                        Grid.Row="5" Grid.Column="1"
+                        Command="{Binding SaveCommand}"/>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

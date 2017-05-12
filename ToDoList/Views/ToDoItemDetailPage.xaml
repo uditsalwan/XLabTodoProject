@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoList.ToDoItemDetailPage"
+             Title="To Do Item Detail">
+
+    <ScrollView>
+        <StackLayout Padding="10" Orientation="Vertical">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Title"
+                       Grid.Row="0" Grid.Column="0"
+                       VerticalOptions="Center"
+                       Font="20" />
+                <Entry Text="{Binding Title}"
+                       Grid.Row="0" Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       IsEnabled="False"/>
+                <Label Text="Description"
+                       Grid.Row="1" Grid.Column="0"
+                       VerticalOptions="Center"
+                       Font="20" />
+                <Entry Text="{Binding Details}"
+                       Grid.Row="1" Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       IsEnabled="False"/>
+                <Label Text="Due Date"
+                       Grid.Row="2" Grid.Column="0"
+                       VerticalOptions="Center"
+                       Font="20" />
+                <Entry Text="{Binding DueDate}"
+                       Grid.Row="2" Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       IsEnabled="False"/>
+                <Label Text="Current Location"
+                       Grid.Row="3" Grid.Column="0"
+                       VerticalOptions="Center"
+                       Font="20" />
+                <Entry Text="{Binding LocationCoordinates}"
+                       Grid.Row="3" Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       IsEnabled="False"/>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+    
+</ContentPage>
