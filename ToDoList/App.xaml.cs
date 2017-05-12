@@ -4,11 +4,25 @@ namespace ToDoList
 {
 	public partial class App : Application
 	{
+		static DbHandler dbHandler;
+
 		public App()
 		{
 			InitializeComponent();
 
-			MainPage = new ToDoListPage();
+			MainPage = new NavigationPage(new ToDoListPage());
+		}
+
+		public static DbHandler DatabaseHandler
+		{
+			get
+			{
+				if (dbHandler == null)
+				{
+					dbHandler = new DbHandler(DependencyService.Get<IFilePathHelper>().GetLocalFilePath("TodoDb.db3"));
+				}
+				return dbHandler;
+			}
 		}
 
 		protected override void OnStart()
