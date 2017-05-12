@@ -35,10 +35,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ToDoItemDetailPage.xaml.cs">
+    <Compile Include="Views\ToDoItemDetailPage.xaml.cs">
       <DependentUpon>ToDoItemDetailPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ToDoItemDetailPageViewModel.cs" />
+    <Compile Include="ViewModels\ToDoItemDetailPageViewModel.cs" />
     <Compile Include="ViewModels\ToDoDetailInputPageViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,7 +97,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ToDoItemDetailPage.xaml">
+    <EmbeddedResource Include="Views\ToDoItemDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
