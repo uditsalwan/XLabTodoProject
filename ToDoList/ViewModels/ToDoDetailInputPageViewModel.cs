@@ -90,7 +90,7 @@ namespace ToDoList
         {
             string savingResult = "Title : " + title + "\n" +
                                   "Description : " + description + "\n" +
-                "Date : " + dueDateTime.Date.ToString() + "\n" +
+                "Date : " + dueDateTime.Date.ToString("d") + "\n" +
                                   "Location : " + currentLocation;
             var answer = await toDoDetailInputPage.DisplayAlert("Review and Save", savingResult, "OK", "Cancel");
             if (answer)

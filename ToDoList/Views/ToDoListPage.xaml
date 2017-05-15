@@ -15,7 +15,7 @@
                             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="10">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
                                     <Label Text="{Binding Title}" />
-                                    <Label Text="{Binding DueDate}" />
+                                    <Label Text="{Binding DueDateString}" />
                                 </StackLayout>                                
                                 <Label Text="{Binding Details}}" />
                                 <Label Text="{Binding LocationCoordinates}}" />

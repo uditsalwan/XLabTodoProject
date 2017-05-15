@@ -11,5 +11,11 @@ namespace ToDoList
 		public string Details { get; set; }
 		public DateTime DueDate { get; set; }
 		public string LocationCoordinates { get; set; }
+
+        public string DueDateString {
+            get{
+                return DueDate.ToString("d");
+            }
+        }
 	}
 }
