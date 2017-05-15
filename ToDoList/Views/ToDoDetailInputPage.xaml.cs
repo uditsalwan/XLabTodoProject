@@ -39,7 +39,7 @@ namespace ToDoList
             else
             {
                 ButtonCurrentLocation.IsEnabled = true;
-                LabelGPS.Text = "GPS is disabled!";
+                await DisplayAlert("GPS disabled!", "Please enable the GPS.", "OK");
             }
         }
     }
