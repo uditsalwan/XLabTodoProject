@@ -7,6 +7,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xamarin.Forms;
 
 namespace ToDoList.Droid
 {
@@ -23,6 +24,7 @@ namespace ToDoList.Droid
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 
 			LoadApplication(new App());
-		}
+            Utils.ScheduleNotification(Forms.Context, "Message Body from activity");
+        }
 	}
 }
