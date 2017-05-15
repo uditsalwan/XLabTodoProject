@@ -5,7 +5,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="ItemList" ItemTapped="TodoList_ItemTapped" HasUnevenRows="True">
+            <ListView x:Name="ItemList" ItemTapped="TodoList_ItemTapped" HasUnevenRows="True" SeparatorColor="#123456">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

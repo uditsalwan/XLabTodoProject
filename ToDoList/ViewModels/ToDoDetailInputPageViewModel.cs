@@ -14,7 +14,7 @@ namespace ToDoList
         private string title;
         private string description;
         private string currentLocation;
-        private DateTime dueDateTime = DateTime.Now;
+        private DateTime dueDateTime = DateTime.Today;
         private ToDoDetailInputPage toDoDetailInputPage;
         #endregion
 
@@ -90,16 +90,16 @@ namespace ToDoList
         {
             string savingResult = "Title : " + title + "\n" +
                                   "Description : " + description + "\n" +
-                                  "Date : " + dueDateTime.ToString() + "\n" +
+                "Date : " + dueDateTime.Date.ToString() + "\n" +
                                   "Location : " + currentLocation;
-            var answer = await toDoDetailInputPage.DisplayAlert("Hurray!", savingResult, "OK", "Cancel");
+            var answer = await toDoDetailInputPage.DisplayAlert("Review and Save", savingResult, "OK", "Cancel");
             if (answer)
             {
                 var todoItem = new TodoItem()
                 {
                     title = title,
                     details = description,
-                    dueDate = dueDateTime,
+                    dueDate = dueDateTime.Date,
                     locationCoordinates = currentLocation
                 };
                 saveItem(todoItem);

@@ -14,7 +14,7 @@ namespace ToDoList
 		{
 			try
 			{
-				database = new SQLiteAsyncConnection(path);
+                database = new SQLiteAsyncConnection(path, true);
 				database.CreateTableAsync<TodoItem>();
 			}
 			catch (SQLiteException ex)
@@ -26,6 +26,13 @@ namespace ToDoList
 		public Task<List<TodoItem>> GetTodoItemList()
 		{
 			return database.Table<TodoItem>().ToListAsync();
+		}
+
+		public Task<List<TodoItem>> GetTodayTodoItemList()
+		{
+            return database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [dueDate] >= ? AND [dueDate] < ?", 
+                                                 DateTime.Today.Ticks, 
+                                                 DateTime.Today.AddHours(24));
 		}
 
 		public Task<int> SaveItem(TodoItem item)
