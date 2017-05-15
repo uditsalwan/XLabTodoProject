@@ -7,17 +7,9 @@ namespace ToDoList
 	{
 		[PrimaryKey, AutoIncrement]
 		public int ID { get; set; }
-		public string title { get; set; }
-		public string details { get; set; }
-		public DateTime dueDate { get; set; }
-		public string locationCoordinates { get; set; }
-
-		public TodoItem()
-		{
-			title = "";
-			details = "";
-			dueDate = System.DateTime.Today;
-			locationCoordinates = "";
-		}
+		public string Title { get; set; }
+		public string Details { get; set; }
+		public DateTime DueDate { get; set; }
+		public string LocationCoordinates { get; set; }
 	}
 }

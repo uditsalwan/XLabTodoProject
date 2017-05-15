@@ -97,16 +97,16 @@ namespace ToDoList
             {
                 var todoItem = new TodoItem()
                 {
-                    title = title,
-                    details = description,
-                    dueDate = dueDateTime.Date,
-                    locationCoordinates = currentLocation
+                    Title = title,
+                    Details = description,
+                    DueDate = dueDateTime.Date,
+                    LocationCoordinates = currentLocation
                 };
-                saveItem(todoItem);
+                SaveItem(todoItem);
             }
         }
 
-        private async void saveItem(TodoItem todoItem)
+        private async void SaveItem(TodoItem todoItem)
         {
             await App.DatabaseHandler.SaveItem(todoItem);
             await toDoDetailInputPage.Navigation.PopModalAsync();

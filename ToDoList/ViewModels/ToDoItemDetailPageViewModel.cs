@@ -13,10 +13,10 @@ namespace ToDoList
         public ToDoItemDetailPageViewModel(TodoItem todoItem)
         {
             ID = todoItem.ID;
-            Title = todoItem.title;
-            Details = todoItem.details;
-            DueDate = todoItem.dueDate.ToString();
-            LocationCoordinates = todoItem.locationCoordinates;
+            Title = todoItem.Title;
+            Details = todoItem.Details;
+            DueDate = todoItem.DueDate.ToString();
+            LocationCoordinates = todoItem.LocationCoordinates;
         }
         #endregion
 

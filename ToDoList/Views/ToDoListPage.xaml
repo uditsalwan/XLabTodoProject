@@ -14,11 +14,11 @@
                             </ViewCell.ContextActions>
                             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="10">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
-                                    <Label Text="{Binding title}" />
-                                    <Label Text="{Binding dueDate}" />
+                                    <Label Text="{Binding Title}" />
+                                    <Label Text="{Binding DueDate}" />
                                 </StackLayout>                                
-                                <Label Text="{Binding details}}" />
-                                <Label Text="{Binding locationCoordinates}}" />
+                                <Label Text="{Binding Details}}" />
+                                <Label Text="{Binding LocationCoordinates}}" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

@@ -21,7 +21,7 @@ namespace ToDoList
         {
             InitializeComponent();
             BindingContext = new ToDoItemDetailPageViewModel(todoItem);
-            Title = todoItem.title;
+            Title = todoItem.Title;
         }
     }
 }

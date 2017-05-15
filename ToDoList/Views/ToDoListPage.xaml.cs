@@ -15,11 +15,11 @@ namespace ToDoList
             Title = "ToDos";
 		}
 
-		protected async override void OnAppearing()
+        protected async override void OnAppearing()
 		{
 			base.OnAppearing();
 
-			ItemList.ItemsSource = await App.DatabaseHandler.GetTodoItemList();
+            ItemList.ItemsSource = await App.DatabaseHandler.GetTodoItemList();
 		}
 
         private async void TodoList_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -41,7 +41,7 @@ namespace ToDoList
             TodoItem item = mi.CommandParameter as TodoItem;
 
             var accepted = await DisplayAlert("Delete?",
-                                              "Are your sure you want to delete " + item.title,
+                                              "Are your sure you want to delete " + item.Title,
                                               "OK", "Canel");
 
             if (accepted)

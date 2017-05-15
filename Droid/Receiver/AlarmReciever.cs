@@ -31,8 +31,8 @@ namespace ToDoList.Droid
         {
             var content = intent.GetStringExtra(CONTENT);
             Notification.Builder builder = new Notification.Builder(context);
-            builder.SetContentTitle(item.title);
-            builder.SetContentText(item.details);
+            builder.SetContentTitle(item.Title);
+            builder.SetContentText(item.Details);
             builder.SetSmallIcon(Resource.Drawable.icon);
 
             var notification = builder.Build();
