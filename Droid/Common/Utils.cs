@@ -29,7 +29,7 @@ namespace ToDoList.Droid
                 AlarmManager alarmManager = (AlarmManager)context.GetSystemService(Context.AlarmService);
 
                 Calendar calendar = Calendar.GetInstance(Java.Util.TimeZone.Default);
-                calendar.Set(CalendarField.HourOfDay, 12);
+                calendar.Set(CalendarField.HourOfDay, 1);
                 calendar.Set(CalendarField.Minute, 1);
 
                 alarmManager.SetInexactRepeating(AlarmType.RtcWakeup, calendar.TimeInMillis,

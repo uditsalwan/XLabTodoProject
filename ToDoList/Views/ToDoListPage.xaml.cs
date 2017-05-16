@@ -15,11 +15,11 @@ namespace ToDoList
             Title = "ToDos";
 		}
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
 		{
 			base.OnAppearing();
 
-            ItemList.ItemsSource = await App.DatabaseHandler.GetTodoItemList();
+             ItemList.ItemsSource = App.DatabaseHandler.GetTodoItemList();
 		}
 
         private async void TodoList_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -46,8 +46,8 @@ namespace ToDoList
 
             if (accepted)
             {
-                await App.DatabaseHandler.DeleteItem(item);
-                ItemList.ItemsSource = await App.DatabaseHandler.GetTodoItemList();
+                App.DatabaseHandler.DeleteItem(item);
+                ItemList.ItemsSource = App.DatabaseHandler.GetTodoItemList();
             }
         }
     }

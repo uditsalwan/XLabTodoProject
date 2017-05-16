@@ -13,11 +13,11 @@ namespace ToDoList.Droid
     {
         internal static string CONTENT = "content";
 
-        public async override void OnReceive(Context context, Intent intent)
+        public override void OnReceive(Context context, Intent intent)
         {
             Toast.MakeText(context, "AlarmReciever Received intent!", ToastLength.Long).Show();
 
-            List<TodoItem> todayTodoItems = await App.DatabaseHandler.GetTodayTodoItemList();
+            List<TodoItem> todayTodoItems = App.DatabaseHandler.GetTodayTodoItemList();
 
             int groupId = (int)((new Date().Time / 1000L) % Integer.MaxValue);
 

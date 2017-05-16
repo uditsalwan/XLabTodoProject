@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using SQLite;
 
 namespace ToDoList
@@ -12,10 +12,10 @@ namespace ToDoList
 		public DateTime DueDate { get; set; }
 		public string LocationCoordinates { get; set; }
 
-        //public string DueDateString {
-        //    get{
-        //        return DueDate.ToString("d");
-        //    }
-        //}
+        public string DueDateString {
+            get{
+                return DueDate.ToString("d");
+            }
+        }
 	}
 }

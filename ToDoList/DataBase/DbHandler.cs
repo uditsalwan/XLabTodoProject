@@ -1,55 +1,66 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using SQLite;
+using System.Threading;
+using System.Linq;
 
 namespace ToDoList
 {
 	public class DbHandler
 	{
-		SQLiteAsyncConnection database;
+        SQLiteConnection database;
 
 		public DbHandler(string path)
 		{
 			try
 			{
-                database = new SQLiteAsyncConnection(path, true);
-				database.CreateTableAsync<TodoItem>();
+                database = new SQLiteConnection(path, true);
+                database.CreateTable<TodoItem>();
 			}
 			catch (SQLiteException ex)
 			{
-				Debug.WriteLine(ex.Message);
+				Debug.WriteLine("DbHandler" + ex.Message);
 			}
 		}
 
-		public Task<List<TodoItem>> GetTodoItemList()
+		public List<TodoItem> GetTodoItemList()
 		{
-			return database.Table<TodoItem>().ToListAsync();
+            List<TodoItem> list;
+            try
+            {
+                list = database.Table<TodoItem>().ToList();
+                return list;
+            } catch (Exception e)
+            {
+                Debug.WriteLine("GetTodoItemList" + e.Message);
+                return null;
+            }
 		}
 
-		public Task<List<TodoItem>> GetTodayTodoItemList()
+		public List<TodoItem> GetTodayTodoItemList()
 		{
-            return database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [dueDate] >= ? AND [dueDate] < ?", 
+            return database.Query<TodoItem>("SELECT * FROM [TodoItem] WHERE [dueDate] >= ? AND [dueDate] < ?", 
                                                  DateTime.Today.Ticks, 
                                                  DateTime.Today.AddHours(24));
 		}
 
-		public Task<int> SaveItem(TodoItem item)
+        public int SaveItem(TodoItem item)
 		{
 			if (item.ID != 0)
 			{
-				return database.UpdateAsync(item);
+                return database.Update(item);
 			}
 			else
 			{
-				return database.InsertAsync(item);
+                return database.Insert(item);
 			}
 		}
 
-		public Task<int> DeleteItem(TodoItem item)
+        public int DeleteItem(TodoItem item)
 		{
-			return database.DeleteAsync(item);
+            return database.Delete(item);
 		}
 	}
 }
