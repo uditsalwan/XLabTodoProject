@@ -7,7 +7,7 @@ namespace ToDoList
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged([CallerMemberName]string propertyName = "")
+        protected void OnPropertyChanged([CallerMemberName]string propertyName = Constants.EmptyString)
         {
             var handler = PropertyChanged;
             if (handler == null) return;

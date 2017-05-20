@@ -19,7 +19,7 @@ namespace ToDoList
 			{
 				if (dbHandler == null)
 				{
-					dbHandler = new DbHandler(DependencyService.Get<IFilePathHelper>().GetLocalFilePath("TodoDb.db3"));
+					dbHandler = new DbHandler(DependencyService.Get<IFilePathHelper>().GetLocalFilePath(Constants.DB_NAME));
 				}
 				return dbHandler;
 			}

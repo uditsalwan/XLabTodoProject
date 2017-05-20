@@ -1,14 +1,12 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using SQLite;
-using System.Threading;
 using System.Linq;
 
 namespace ToDoList
 {
-	public class DbHandler
+    public class DbHandler
 	{
         SQLiteConnection database;
 

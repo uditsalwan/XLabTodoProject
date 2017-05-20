@@ -13,33 +13,33 @@ namespace ToDoList
         {
             InitializeComponent();
             BindingContext = new ToDoDetailInputPageViewModel(this);
+            myDateTime.MinimumDate = DateTime.Now;
         }
 
         private async void CurrentLocation_Clicked(object sender, EventArgs e)
         {
             var locator = CrossGeolocator.Current;
-            locator.DesiredAccuracy = 50;
+            locator.DesiredAccuracy = Constants.GeoLocatorDesiredAccuracy;
 
             ButtonCurrentLocation.IsEnabled = false;
             if (locator.IsGeolocationEnabled && locator.IsGeolocationAvailable)
             {
-                var position = await locator.GetPositionAsync(timeoutMilliseconds: 10000);
+                var position = await locator.GetPositionAsync(timeoutMilliseconds: Constants.GeoPositionAsyncTimeOut);
                 //await locator.StopListeningAsync();
 
                 if (position == null)
                 {
-                    LabelGPS.Text = "null gps :(";
                     ButtonCurrentLocation.IsEnabled = true;
                     return;
                 }
                 ButtonCurrentLocation.IsVisible = false;
                 LabelGPS.IsVisible = true;
-                LabelGPS.Text = position.Latitude + "," + position.Longitude;
+                LabelGPS.Text = position.Latitude + Constants.DelimiterComma + position.Longitude;
             }
             else
             {
                 ButtonCurrentLocation.IsEnabled = true;
-                await DisplayAlert("GPS disabled!", "Please enable the GPS.", "OK");
+                await DisplayAlert(AppResources.GPSDisable, AppResources.EnableGPSMessage, AppResources.OK);
             }
         }
     }

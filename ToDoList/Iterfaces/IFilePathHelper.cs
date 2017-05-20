@@ -1,7 +1,6 @@
-﻿using System;
-namespace ToDoList
+﻿namespace ToDoList
 {
-	public interface IFilePathHelper
+    public interface IFilePathHelper
 	{
 		string GetLocalFilePath(string filename);
 	}

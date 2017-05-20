@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace ToDoList
@@ -74,11 +70,11 @@ namespace ToDoList
         {
             if (String.IsNullOrEmpty(title))
             {
-                SavingResult = "Please enter the TODO title.";
+                SavingResult = AppResources.TitleValidationMessage;
             }
             else if (String.IsNullOrEmpty(description))
             {
-                SavingResult = "Please enter the TODO description.";
+                SavingResult = AppResources.DescriptionValidationMessage;
             }
             else
             {
@@ -88,11 +84,11 @@ namespace ToDoList
 
         private async void ShowSuccessDialog(string title, string description, DateTime dueDateTime, string currentLocation)
         {
-            string savingResult = "Title : " + title + "\n" +
-                                  "Description : " + description + "\n" +
-                "Date : " + dueDateTime.Date.ToString("d") + "\n" +
-                                  "Location : " + currentLocation;
-            var answer = await toDoDetailInputPage.DisplayAlert("Review and Save", savingResult, "OK", "Cancel");
+            string savingResult = AppResources.Title + title + Constants.LineChange +
+                                  AppResources.Description + description + Constants.LineChange +
+                AppResources.Date + dueDateTime.Date.ToString("d") + Constants.LineChange +
+                                  AppResources.Location + currentLocation;
+            var answer = await toDoDetailInputPage.DisplayAlert(AppResources.ReviewDialogTitle, savingResult, AppResources.OK, AppResources.Cancel);
             if (answer)
             {
                 var todoItem = new TodoItem()

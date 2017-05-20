@@ -1,18 +1,15 @@
-﻿using System.Threading.Tasks;
-using System.Collections.Generic;
-using Xamarin.Forms;
-using System.Diagnostics;
+﻿using Xamarin.Forms;
 using System;
 
 
 namespace ToDoList
 {
-	public partial class ToDoListPage : ContentPage
+    public partial class ToDoListPage : ContentPage
 	{
 		public ToDoListPage()
 		{
 			InitializeComponent();
-            Title = "ToDos";
+            Title = AppResources.PageTitleToDo;
 		}
 
         protected override void OnAppearing()
@@ -25,7 +22,6 @@ namespace ToDoList
         private async void TodoList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as TodoItem;
-            //DisplayAlert("Selection Made", "You tapped on " + item.title, "Ok");
             await Navigation.PushModalAsync(new NavigationPage(new ToDoItemDetailPage(item)));
         }
 
@@ -40,9 +36,8 @@ namespace ToDoList
             var mi = ((MenuItem)sender);
             TodoItem item = mi.CommandParameter as TodoItem;
 
-            var accepted = await DisplayAlert("Delete?",
-                                              "Are your sure you want to delete " + item.Title,
-                                              "OK", "Canel");
+            var accepted = await DisplayAlert(AppResources.Delete, AppResources.DeleteMessage + item.Title,
+                                              AppResources.OK, AppResources.Cancel);
 
             if (accepted)
             {

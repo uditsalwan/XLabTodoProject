@@ -4,6 +4,17 @@
              x:Class="ToDoList.ToDoDetailInputPage"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              Title="ToDo Detail Input">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="labelBlueStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Font" Value="20"/>
+                <Setter Property="TextColor" Value="#123456"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="SaveButton" Text="SAVE" Command="{Binding SaveCommand}" />
     </ContentPage.ToolbarItems>
@@ -30,9 +41,7 @@
 
                 <Label Text="Title"
                        Grid.Row="0" Grid.Column="0"
-                       VerticalOptions="Center"
-                       Font="20"
-                       TextColor = "#123456"/>
+                       Style="{StaticResource labelBlueStyle}" />
                 <Entry Placeholder="Enter Title"
                        Grid.Row="0" Grid.Column="1"
                        Grid.ColumnSpan="2"
@@ -40,10 +49,8 @@
 
                 <Label Text="Description"
                        Grid.Row="1" Grid.Column="0"
-                       VerticalOptions="Center"
                        Grid.RowSpan="2"
-                       Font="20"
-                       TextColor = "#123456"/>
+                       Style="{StaticResource labelBlueStyle}" />
                 <Editor Grid.Row="1" Grid.Column="1"
                        Grid.ColumnSpan="2"
                        Grid.RowSpan="2"
@@ -51,21 +58,12 @@
 
                 <Label Text="Due Date"
                        Grid.Row="3" Grid.Column="0"
-                       VerticalOptions="Center"
-                       Font="20"
-                       TextColor = "#123456"/>
+                       Style="{StaticResource labelBlueStyle}" />
 
-                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding DueDateTime}"
+                <DatePicker x:Name="myDateTime" VerticalOptions="CenterAndExpand" Date="{Binding DueDateTime}"
                             Grid.Row="3" Grid.Column="1"
                             Grid.ColumnSpan="2" >
                     <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
-                    <DatePicker.MinimumDate>
-                        <sys:DateTime x:FactoryMethod="Parse">
-                            <x:Arguments>
-                                <x:String>Jan 1 2000</x:String>
-                            </x:Arguments>
-                        </sys:DateTime>
-                    </DatePicker.MinimumDate>
                     <DatePicker.MaximumDate>
                         <sys:DateTime x:FactoryMethod="Parse">
                             <x:Arguments>
@@ -77,9 +75,7 @@
 
                 <Label Text="Current Location"
                     Grid.Row="4" Grid.Column="0"
-                    VerticalOptions="Center"
-                    Font="20"
-                    TextColor = "#123456"/>
+                    Style="{StaticResource labelBlueStyle}" />
                 <Button x:Name="ButtonCurrentLocation"
                     Text="Click here.."
                     Grid.Row="4" Grid.Column="1"
@@ -87,7 +83,6 @@
                     Clicked="CurrentLocation_Clicked"
                     IsVisible="True" />
                 <Entry x:Name="LabelGPS"
-                    
                     Grid.Row="4" Grid.Column="1"
                     Grid.ColumnSpan="2"
                     Text = "{Binding CurrentLocation}"

@@ -4,6 +4,16 @@
              x:Class="ToDoList.ToDoItemDetailPage"
              Title="To Do Item Detail">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="labelBlueStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Font" Value="20"/>
+                <Setter Property="TextColor" Value="#123456"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ScrollView>
         <StackLayout Padding="10" Orientation="Vertical">
 
@@ -24,27 +34,21 @@
 
                 <Label Text="Description"
                        Grid.Row="0" Grid.Column="0"
-                       VerticalOptions="Center"
-                       Font="20" 
-                       TextColor = "#123456"/>
+                       Style="{StaticResource labelBlueStyle}" />
                 <Entry Text="{Binding Details}"
                        Grid.Row="0" Grid.Column="1"
                        Grid.ColumnSpan="2"
                        IsEnabled="False"/>
                 <Label Text="Due Date"
                        Grid.Row="1" Grid.Column="0"
-                       VerticalOptions="Center"
-                       Font="20"
-                       TextColor = "#123456"/>
+                       Style="{StaticResource labelBlueStyle}"/>
                 <Entry Text="{Binding DueDate}"
                        Grid.Row="1" Grid.Column="1"
                        Grid.ColumnSpan="2"
                        IsEnabled="False"/>
                 <Label Text="Current Location"
                        Grid.Row="2" Grid.Column="0"
-                       VerticalOptions="Center"
-                       Font="20" 
-                       TextColor = "#123456"/>
+                       Style="{StaticResource labelBlueStyle}"/>
                 <Entry Text="{Binding LocationCoordinates}"
                        Grid.Row="2" Grid.Column="1"
                        Grid.ColumnSpan="2"
@@ -52,5 +56,5 @@
             </Grid>
         </StackLayout>
     </ScrollView>
-    
+
 </ContentPage>
