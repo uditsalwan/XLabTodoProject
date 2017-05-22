@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using SQLite;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace ToDoList
 {
     public class DbHandler
 	{
+		private static DbHandler dbInstance;
+
         SQLiteConnection database;
 
-		public DbHandler(string path)
+        private DbHandler()
 		{
 			try
 			{
+                var path = DependencyService.Get<IFilePathHelper>().GetLocalFilePath(Constants.DB_NAME);
                 database = new SQLiteConnection(path, true);
                 database.CreateTable<TodoItem>();
 			}
@@ -22,6 +26,15 @@ namespace ToDoList
 				Debug.WriteLine("DbHandler" + ex.Message);
 			}
 		}
+
+        public static DbHandler Instance()
+        {
+			if (dbInstance == null)
+			{
+				dbInstance = new DbHandler();
+			}
+			return dbInstance;
+        }
 
 		public List<TodoItem> GetTodoItemList()
 		{

@@ -61,6 +61,7 @@
       <DependentUpon>ToDoListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\TodoItem.cs" />
+    <Compile Include="ViewModels\ToDoListPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Plugin.Geolocator, Version=3.0.4.0, Culture=neutral, processorArchitecture=MSIL">

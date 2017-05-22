@@ -1,5 +1,4 @@
-﻿
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.Widget;
 using Java.Util;
@@ -17,7 +16,7 @@ namespace ToDoList.Droid
         {
             Toast.MakeText(context, "AlarmReciever Received intent!", ToastLength.Long).Show();
 
-            List<TodoItem> todayTodoItems = App.DatabaseHandler.GetTodayTodoItemList();
+            List<TodoItem> todayTodoItems = DbHandler.Instance().GetTodayTodoItemList();
 
             int groupId = (int)((new Date().Time / 1000L) % Integer.MaxValue);
 

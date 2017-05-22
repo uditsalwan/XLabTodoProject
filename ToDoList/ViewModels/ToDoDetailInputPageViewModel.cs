@@ -104,7 +104,7 @@ namespace ToDoList
 
         private async void SaveItem(TodoItem todoItem)
         {
-            App.DatabaseHandler.SaveItem(todoItem);
+            DbHandler.Instance().SaveItem(todoItem);
             await toDoDetailInputPage.Navigation.PopModalAsync();
         }
         #endregion

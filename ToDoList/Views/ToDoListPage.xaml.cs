@@ -1,23 +1,26 @@
 ﻿using Xamarin.Forms;
 using System;
 
-
 namespace ToDoList
 {
     public partial class ToDoListPage : ContentPage
-	{
-		public ToDoListPage()
-		{
-			InitializeComponent();
+    {
+        ToDoListPageViewModel ListViewModel = null;
+
+        public ToDoListPage()
+        {
+            InitializeComponent();
             Title = AppResources.PageTitleToDo;
-		}
+            ListViewModel = new ToDoListPageViewModel();
+            BindingContext = ListViewModel;
+        }
 
         protected override void OnAppearing()
-		{
-			base.OnAppearing();
+        {
+            base.OnAppearing();
 
-             ItemList.ItemsSource = App.DatabaseHandler.GetTodoItemList();
-		}
+            ListViewModel.ItemList = DbHandler.Instance().GetTodoItemList();
+        }
 
         private async void TodoList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -41,8 +44,8 @@ namespace ToDoList
 
             if (accepted)
             {
-                App.DatabaseHandler.DeleteItem(item);
-                ItemList.ItemsSource = App.DatabaseHandler.GetTodoItemList();
+                DbHandler.Instance().DeleteItem(item);
+                ListViewModel.ItemList = DbHandler.Instance().GetTodoItemList();
             }
         }
     }
