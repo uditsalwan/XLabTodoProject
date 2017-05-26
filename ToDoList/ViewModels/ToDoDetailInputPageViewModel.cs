@@ -85,8 +85,8 @@ namespace ToDoList
         private async void ShowSuccessDialog(string title, string description, DateTime dueDateTime, string currentLocation)
         {
             string savingResult = AppResources.Title + title + Constants.LineChange +
-                                  AppResources.Description + description + Constants.LineChange +
-                AppResources.Date + dueDateTime.Date.ToString("d") + Constants.LineChange +
+                                  AppResources.DescriptionAlertText + description + Constants.LineChange +
+                                              AppResources.DueDate + dueDateTime.Date.ToString("d") + Constants.LineChange +
                                   AppResources.Location + currentLocation;
             var answer = await toDoDetailInputPage.DisplayAlert(AppResources.ReviewDialogTitle, savingResult, AppResources.OK, AppResources.Cancel);
             if (answer)

@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ToDoList.ToDoItemDetailPage"
-             Title="To Do Item Detail">
+             xmlns:resources="clr-namespace:ToDoList;assembly=ToDoList"
+             Title="{resources:Translate DetailPageTitle}">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -32,21 +33,21 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Description"
+                <Label Text="{resources:Translate Description}"
                        Grid.Row="0" Grid.Column="0"
                        Style="{StaticResource labelBlueStyle}" />
                 <Entry Text="{Binding Details}"
                        Grid.Row="0" Grid.Column="1"
                        Grid.ColumnSpan="2"
                        IsEnabled="False"/>
-                <Label Text="Due Date"
+                <Label Text="{resources:Translate DueDate}"
                        Grid.Row="1" Grid.Column="0"
                        Style="{StaticResource labelBlueStyle}"/>
                 <Entry Text="{Binding DueDate}"
                        Grid.Row="1" Grid.Column="1"
                        Grid.ColumnSpan="2"
                        IsEnabled="False"/>
-                <Label Text="Current Location"
+                <Label Text="{resources:Translate Location}"
                        Grid.Row="2" Grid.Column="0"
                        Style="{StaticResource labelBlueStyle}"/>
                 <Entry Text="{Binding LocationCoordinates}"

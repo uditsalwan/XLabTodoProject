@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:ToDoList" x:Class="ToDoList.ToDoListPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:ToDoList" 
+    x:Class="ToDoList.ToDoListPage"
+    xmlns:resources="clr-namespace:ToDoList;assembly=ToDoList">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="AddItem" Text="ADD" Clicked="AddItem_Clicked" />
+        <ToolbarItem x:Name="AddItem" Text="{resources:Translate AddButton}" Clicked="AddItem_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
@@ -10,7 +14,10 @@
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.ContextActions>
-                                <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+                                <MenuItem Clicked="OnDelete" 
+                                CommandParameter="{Binding .}" 
+                                Text="{resources:Translate Delete}" 
+                                IsDestructive="True" />
                             </ViewCell.ContextActions>
                             <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical" Padding="10">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">

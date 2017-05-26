@@ -16,6 +16,12 @@ namespace ToDoList.Droid
         {
             Toast.MakeText(context, "AlarmReciever Received intent!", ToastLength.Long).Show();
 
+
+            if (!Xamarin.Forms.Forms.IsInitialized)
+            {
+                Xamarin.Forms.Forms.Init(context, null);
+            }
+
             List<TodoItem> todayTodoItems = DbHandler.Instance().GetTodayTodoItemList();
 
             int groupId = (int)((new Date().Time / 1000L) % Integer.MaxValue);
